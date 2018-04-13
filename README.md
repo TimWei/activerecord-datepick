@@ -54,12 +54,12 @@ Post.all.first.today?
 
 **Custom column**
 
-The default date picking column will be :created_at which given by active record itself, you can setup custom column for date picking.
+The default date picking column will be :created_at which was given by active record itself, you can setup custom date picking column.
 
 ``` ruby
 class Post < ActiveRecord::Base
   include Datepicker::Model
-  self.datepick_on = :post_date
+  self.datepick_on = :posted_date
 end
 ```
 
