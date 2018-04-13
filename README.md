@@ -35,7 +35,7 @@ end
 
 **Date-picking records**
 
-```
+```ruby
 # filter by specific date
 some_date = Date.new 2018, 4, 13
 Post.pick_date some_date
