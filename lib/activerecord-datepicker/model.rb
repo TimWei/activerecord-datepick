@@ -7,7 +7,14 @@ module Datepicker
 	      self.datepick_on = :created_at
 
 	      scope :today, ->{ where("#{datepick_on.to_s} > ? AND #{datepick_on.to_s} < ?",Date.today.midnight, Date.today.end_of_day) }
-	      scope :pick_date, -> (date){ where(datepick_on => date.midnight..date.end_of_day) }
+	      scope :pick_date, -> (param){ 
+	      	if param.class == Range 
+	      		from,to = param.first, param.last
+	      	else
+	      		from,to = param, param
+	      	end
+	      	where(datepick_on => from.midnight..to.end_of_day) 
+	      }
 	    end
 
 	    def today?
